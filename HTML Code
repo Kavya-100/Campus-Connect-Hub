@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Life Manager</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            --color-info: var(--color-slate-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+            --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+            --space-4: 4px;
+            --space-6: 6px;
+            --space-8: 8px;
+            --space-10: 10px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+                --color-bg-4: rgba(185, 28, 28, 0.15);
+                --color-bg-5: rgba(107, 33, 168, 0.15);
+                --color-bg-6: rgba(194, 65, 12, 0.15);
+                --color-bg-7: rgba(190, 24, 93, 0.15);
+                --color-bg-8: rgba(8, 145, 178, 0.15);
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-primary-active: var(--color-teal-800);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+                --color-info: var(--color-gray-300);
+                --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: var(--line-height-normal);
+            font-size: var(--font-size-base);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-24);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-teal-600), var(--color-teal-400));
+            padding: var(--space-32);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-32);
+            box-shadow: var(--shadow-lg);
+        }
+
+        h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-cream-50);
+            margin-bottom: var(--space-12);
+        }
+
+        .subtitle {
+            font-size: var(--font-size-lg);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: var(--space-8);
+            margin-bottom: var(--space-24);
+            border-bottom: 2px solid var(--color-border);
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: var(--space-12) var(--space-20);
+            background: transparent;
+            border: none;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all var(--duration-normal) var(--ease-standard);
+            position: relative;
+            bottom: -2px;
+        }
+
+        .tab:hover {
+            color: var(--color-primary);
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-20);
+            margin-bottom: var(--space-24);
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+        }
+
+        .card p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            margin-bottom: var(--space-16);
+        }
+
+        .status {
+            display: inline-block;
+            padding: var(--space-6) var(--space-12);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .status.pending {
+            background: rgba(var(--color-orange-500-rgb), 0.15);
+            color: var(--color-warning);
+            border: 1px solid rgba(var(--color-orange-500-rgb), 0.25);
+        }
+
+        .status.active {
+            background: rgba(var(--color-teal-500-rgb), 0.15);
+            color: var(--color-success);
+            border: 1px solid rgba(var(--color-teal-500-rgb), 0.25);
+        }
+
+        .status.completed {
+            background: rgba(var(--color-slate-500-rgb), 0.15);
+            color: var(--color-info);
+            border: 1px solid rgba(var(--color-slate-500-rgb), 0.25);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-10) var(--space-12);
+            font-size: var(--font-size-base);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .form-control:focus {
+            outline: var(--focus-outline);
+            border-color: var(--color-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+            font-family: var(--font-family-base);
+        }
+
+        .btn {
+            padding: var(--space-10) var(--space-20);
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-primary:active {
+            background: var(--color-primary-active);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .event-item {
+            background: var(--color-bg-1);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-12);
+        }
+
+        .event-item h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .event-meta {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-8);
+        }
+
+        .notice-item {
+            background: var(--color-bg-2);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-12);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .notice-item h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .notice-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .complaint-list {
+            list-style: none;
+        }
+
+        .complaint-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-12);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-16);
+        }
+
+        .complaint-info h4 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-6);
+            color: var(--color-text);
+        }
+
+        .complaint-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .timetable-grid {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: var(--space-12);
+            text-align: left;
+            border: 1px solid var(--color-card-border);
+        }
+
+        th {
+            background: var(--color-secondary);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            font-size: var(--font-size-sm);
+        }
+
+        td {
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+        }
+
+        .club-card {
+            background: var(--color-bg-3);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-12);
+        }
+
+        .club-card h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .club-members {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-12);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--space-32);
+            color: var(--color-text-secondary);
+        }
+
+        .empty-state p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-16);
+            }
+
+            header {
+                padding: var(--space-24);
+            }
+
+            h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .complaint-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Campus Life Manager</h1>
+            <p class="subtitle">Centralized platform for efficient event management, notices, complaints, attendance tracking, and campus collaboration.</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="events">Events & Notices</button>
+            <button class="tab" data-tab="complaints">Complaints</button>
+            <button class="tab" data-tab="timetable">Timetable</button>
+            <button class="tab" data-tab="clubs">Clubs</button>
+            <button class="tab" data-tab="feedback">Feedback</button>
+        </div>
+
+        <!-- Events & Notices Tab -->
+        <div id="events" class="tab-content active">
+            <div class="grid">
+                <div class="card">
+                    <h3>📅 Upcoming Events</h3>
+                    <div id="eventsList">
+                        <div class="event-item">
+                            <h4>Annual Tech Fest 2025</h4>
+                            <p class="event-meta">📍 Main Auditorium | 📆 Nov 15, 2025 | ⏰ 10:00 AM</p>
+                            <p>Join us for the biggest tech event of the year featuring workshops, competitions, and guest speakers.</p>
+                            <span class="status active">Active</span>
+                        </div>
+                        <div class="event-item">
+                            <h4>Cultural Night</h4>
+                            <p class="event-meta">📍 Open Ground | 📆 Nov 20, 2025 | ⏰ 6:00 PM</p>
+                            <p>Celebrate diversity with cultural performances, food stalls, and entertainment.</p>
+                            <span class="status active">Active</span>
+                        </div>
+                    </div>
+                </div>            <div class="card">
+                <h3>📢 Recent Notices</h3>
+                <form id="noticeForm" style="margin-bottom: var(--space-20);">
+                    <div class="form-group">
+                        <label class="form-label" for="noticeTitle">Notice Title</label>
+                        <input type="text" id="noticeTitle" class="form-control" placeholder="Enter notice title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="noticeContent">Content</label>
+                        <textarea id="noticeContent" class="form-control" placeholder="Enter notice content" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Notice</button>
+                </form>
+                <div id="noticesList">
+                        <div class="notice-item">
+                            <h4>Mid-Semester Exam Schedule Released</h4>
+                            <p class="notice-date">Posted on: Oct 20, 2025</p>
+                            <p>The mid-semester examination schedule has been uploaded to the student portal. Please check your timetable.</p>
+                        </div>
+                        <div class="notice-item">
+                            <h4>Library Timings Extended</h4>
+                            <p class="notice-date">Posted on: Oct 18, 2025</p>
+                            <p>The library will now be open until 11 PM on weekdays to accommodate exam preparation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>➕ Post New Event</h3>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label class="form-label" for="eventTitle">Event Title</label>
+                        <input type="text" id="eventTitle" class="form-control" placeholder="Enter event title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="eventLocation">Location</label>
+                        <input type="text" id="eventLocation" class="form-control" placeholder="Enter location" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="eventDate">Date & Time</label>
+                        <input type="datetime-local" id="eventDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="eventDescription">Description</label>
+                        <textarea id="eventDescription" class="form-control" placeholder="Enter event description" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Event</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Complaints Tab -->
+        <div id="complaints" class="tab-content">
+            <div class="card">
+                <h3>🎫 Submit New Complaint</h3>
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label class="form-label" for="complaintCategory">Category</label>
+                        <select id="complaintCategory" class="form-control" required>
+                            <option value="">Select category</option>
+                            <option value="hostel">Hostel</option>
+                            <option value="academics">Academics</option>
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="transport">Transport</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="complaintTitle">Subject</label>
+                        <input type="text" id="complaintTitle" class="form-control" placeholder="Brief subject of complaint" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="complaintDescription">Description</label>
+                        <textarea id="complaintDescription" class="form-control" placeholder="Describe your complaint in detail" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Complaint</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>📋 My Complaints</h3>
+                <ul class="complaint-list" id="complaintList">
+                    <li class="complaint-item">
+                        <div class="complaint-info">
+                            <h4>Room AC not working</h4>
+                            <p>Category: Hostel | Submitted on: Oct 23, 2025</p>
+                        </div>
+                        <span class="status pending">Pending</span>
+                    </li>
+                    <li class="complaint-item">
+                        <div class="complaint-info">
+                            <h4>Late syllabus upload</h4>
+                            <p>Category: Academics | Submitted on: Oct 20, 2025</p>
+                        </div>
+                        <span class="status completed">Resolved</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timetable Tab -->
+        <div id="timetable" class="tab-content">
+            <div class="card">
+                <h3>🗓️ Weekly Timetable</h3>
+                <div class="timetable-grid">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9:00 - 10:00</td>
+                                <td>Data Structures<br><small>Room 101</small></td>
+                                <td>Web Dev<br><small>Room 202</small></td>
+                                <td>Data Structures<br><small>Room 101</small></td>
+                                <td>DBMS<br><small>Room 303</small></td>
+                                <td>Web Dev<br><small>Lab 1</small></td>
+                            </tr>
+                            <tr>
+                                <td>10:00 - 11:00</td>
+                                <td>DBMS<br><small>Room 303</small></td>
+                                <td>OS<br><small>Room 105</small></td>
+                                <td>Web Dev<br><small>Room 202</small></td>
+                                <td>Data Structures<br><small>Lab 2</small></td>
+                                <td>OS<br><small>Room 105</small></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 12:00</td>
+                                <td>OS<br><small>Room 105</small></td>
+                                <td>Data Structures<br><small>Lab 2</small></td>
+                                <td>DBMS<br><small>Room 303</small></td>
+                                <td>Web Dev<br><small>Room 202</small></td>
+                                <td>DBMS<br><small>Lab 3</small></td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 1:00</td>
+                                <td colspan="5" style="text-align: center; background: var(--color-bg-2);">Lunch Break</td>
+                            </tr>
+                            <tr>
+                                <td>1:00 - 2:00</td>
+                                <td>Elective<br><small>Room 201</small></td>
+                                <td>Elective<br><small>Room 201</small></td>
+                                <td>Tutorial<br><small>Room 104</small></td>
+                                <td>-</td>
+                                <td>Tutorial<br><small>Room 104</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Attendance Overview</h3>
+                <div class="grid">
+                    <div style="background: var(--color-bg-1); padding: var(--space-16); border-radius: var(--radius-base);">
+                        <h4 style="margin-bottom: var(--space-8);">Data Structures</h4>
+                        <p style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0;">85%</p>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">28/33 classes</p>
+                    </div>
+                    <div style="background: var(--color-bg-3); padding: var(--space-16); border-radius: var(--radius-base);">
+                        <h4 style="margin-bottom: var(--space-8);">Web Development</h4>
+                        <p style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0;">92%</p>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">30/33 classes</p>
+                    </div>
+                    <div style="background: var(--color-bg-5); padding: var(--space-16); border-radius: var(--radius-base);">
+                        <h4 style="margin-bottom: var(--space-8);">DBMS</h4>
+                        <p style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0;">78%</p>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">26/33 classes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clubs Tab -->
+        <div id="clubs" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>🎭 My Clubs</h3>
+                    <div class="club-card">
+                        <h4>Coding Club</h4>
+                        <p class="club-members">👥 45 members</p>
+                        <p>Weekly coding competitions and workshops on latest technologies.</p>
+                        <button class="btn btn-primary">View Projects</button>
+                    </div>
+                    <div class="club-card">
+                        <h4>Drama Society</h4>
+                        <p class="club-members">👥 32 members</p>
+                        <p>Organizing plays, street performances, and cultural events.</p>
+                        <button class="btn btn-primary">View Projects</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🔍 Discover Clubs</h3>
+                    <div class="club-card">
+                        <h4>Photography Club</h4>
+                        <p class="club-members">👥 28 members</p>
+                        <p>Capture moments, learn techniques, and showcase your work.</p>
+                        <button class="btn btn-secondary">Join Club</button>
+                    </div>
+                    <div class="club-card">
+                        <h4>Music Club</h4>
+                        <p class="club-members">👥 38 members</p>
+                        <p>Jam sessions, concerts, and music production workshops.</p>
+                        <button class="btn btn-secondary">Join Club</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>💬 Club Collaboration Space</h3>
+                <form id="clubMessageForm">
+                    <div class="form-group">
+                        <label class="form-label" for="clubSelect">Select Club</label>
+                        <select id="clubSelect" class="form-control" required>
+                            <option value="">Choose a club</option>
+                            <option value="coding">Coding Club</option>
+                            <option value="drama">Drama Society</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="clubMessage">Message</label>
+                        <textarea id="clubMessage" class="form-control" placeholder="Share updates, ideas, or announcements" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Feedback Tab -->
+        <div id="feedback" class="tab-content">
+            <div class="card">
+                <h3>💭 Share Your Feedback</h3>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackType">Feedback Type</label>
+                        <select id="feedbackType" class="form-control" required>
+                            <option value="">Select type</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="appreciation">Appreciation</option>
+                            <option value="issue">Report Issue</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackSubject">Subject</label>
+                        <input type="text" id="feedbackSubject" class="form-control" placeholder="Brief subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackMessage">Your Feedback</label>
+                        <textarea id="feedbackMessage" class="form-control" placeholder="Share your thoughts and suggestions" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" id="anonymous"> Submit anonymously
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>📊 Recent Feedback</h3>
+                <div class="notice-item">
+                    <h4>Suggestion: Add more vegan options in canteen</h4>
+                    <p class="notice-date">Submitted on: Oct 24, 2025</p>
+                    <p>Status: <span class="status pending">Under Review</span></p>
+                </div>
+                <div class="notice-item">
+                    <h4>Appreciation: Great organization of tech fest</h4>
+                    <p class="notice-date">Submitted on: Oct 22, 2025</p>
+                    <p>Status: <span class="status completed">Acknowledged</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Event form submission
+        document.getElementById('eventForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('eventTitle').value;
+            const location = document.getElementById('eventLocation').value;
+            const dateTime = new Date(document.getElementById('eventDate').value);
+            const description = document.getElementById('eventDescription').value;
+            
+            const formattedDate = dateTime.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            const formattedTime = dateTime.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            const eventHTML = `
+                <div class="event-item">
+                    <h4>${title}</h4>
+                    <p class="event-meta">📍 ${location} | 📆 ${formattedDate} | ⏰ ${formattedTime}</p>
+                    <p>${description}</p>
+                    <span class="status active">Active</span>
+                </div>
+            `;
+            
+            document.getElementById('eventsList').insertAdjacentHTML('afterbegin', eventHTML);
+            
+            e.target.reset();
+            alert('Event posted successfully!');
+        });
+
+        // Complaint form submission
+        document.getElementById('complaintForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const category = document.getElementById('complaintCategory').value;
+            const title = document.getElementById('complaintTitle').value;
+            const today = new Date().toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            
+            const complaintHTML = `
+                <li class="complaint-item">
+                    <div class="complaint-info">
+                        <h4>${title}</h4>
+                        <p>Category: ${category.charAt(0).toUpperCase() + category.slice(1)} | Submitted on: ${today}</p>
+                    </div>
+                    <span class="status pending">Pending</span>
+                </li>
+            `;
+            
+            document.getElementById('complaintList').insertAdjacentHTML('afterbegin', complaintHTML);
+            
+            e.target.reset();
+            alert('Complaint submitted successfully! You will receive updates via email.');
+        });
+
+        // Club message form submission
+        document.getElementById('clubMessageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const clubName = document.getElementById('clubSelect').options[document.getElementById('clubSelect').selectedIndex].text;
+            const message = document.getElementById('clubMessage').value;
+            const today = new Date().toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const messageHTML = `
+                <div class="notice-item">
+                    <h4>${clubName}</h4>
+                    <p class="notice-date">Posted on: ${today}</p>
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            // Add a section to display club messages if it doesn't exist
+            let messagesSection = document.querySelector('#clubMessages');
+            if (!messagesSection) {
+                const clubCollabCard = document.querySelector('#clubs .card:last-child');
+                const messagesSectionHTML = `
+                    <div class="card" style="margin-top: var(--space-24);">
+                        <h3>📨 Recent Club Messages</h3>
+                        <div id="clubMessages"></div>
+                    </div>
+                `;
+                clubCollabCard.insertAdjacentHTML('afterend', messagesSectionHTML);
+                messagesSection = document.querySelector('#clubMessages');
+            }
+            
+            messagesSection.insertAdjacentHTML('afterbegin', messageHTML);
+            
+            alert('Message posted to club successfully!');
+            e.target.reset();
+        });
+
+        // Notice form submission
+        document.getElementById('noticeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('noticeTitle').value;
+            const content = document.getElementById('noticeContent').value;
+            const today = new Date().toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            
+            const noticeHTML = `
+                <div class="notice-item">
+                    <h4>${title}</h4>
+                    <p class="notice-date">Posted on: ${today}</p>
+                    <p>${content}</p>
+                </div>
+            `;
+            
+            document.getElementById('noticesList').insertAdjacentHTML('afterbegin', noticeHTML);
+            
+            e.target.reset();
+            alert('Notice posted successfully!');
+        });
+
+        // Feedback form submission
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const feedbackType = document.getElementById('feedbackType').value;
+            const subject = document.getElementById('feedbackSubject').value;
+            const message = document.getElementById('feedbackMessage').value;
+            const isAnonymous = document.getElementById('anonymous').checked;
+            const today = new Date().toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            
+            // Determine status based on feedback type
+            let statusClass = 'pending';
+            let statusText = 'Under Review';
+            if (feedbackType === 'appreciation') {
+                statusClass = 'completed';
+                statusText = 'Acknowledged';
+            }
+            
+            const feedbackHTML = `
+                <div class="notice-item">
+                    <h4>${feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1)}: ${subject}</h4>
+                    <p class="notice-date">Submitted on: ${today}</p>
+                    <p>Status: <span class="status ${statusClass}">${statusText}</span></p>
+                </div>
+            `;
+            
+            // Add the new feedback to the feedback list
+            const feedbackListContainer = document.querySelector('#feedback .card:last-child');
+            feedbackListContainer.insertAdjacentHTML('beforeend', feedbackHTML);
+            
+            alert('Thank you for your feedback! We appreciate your input.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
